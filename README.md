@@ -1,7 +1,7 @@
 # XGZP6897D
 Arduino basic library for **XGZP6897D** I2C differential pressure sensor from CFSensor  
 
-This library was developed mainly for the XGZP6897D differential pressure sensor but **should be compatible with a wide range of I2C digital pressure sensors from CSsensor.com** (see list of I2C sensor here https://cfsensor.com/product-category/i2c-sensor/) including:  
+This library was developed mainly for the **XGZP6897D** differential pressure sensor but **should be compatible with a wide range of I2C digital pressure sensors from CFSensor.com** (see list of I2C sensor [here](https://cfsensor.com/product-category/i2c-sensor/)) including:  
   
 XGZP6899D  
 XGZP6847D   
@@ -38,6 +38,8 @@ Easy install from the Arduino library manager or manually.
 
 ## Interface
 See the example in the examples directory  
+`#include <XGZP6897D.h>` 
+
 `XGZP6897D(uint16_t K);`  
 Constructor. K is specific to the sensor we use (see above description).  
 
@@ -45,7 +47,11 @@ Constructor. K is specific to the sensor we use (see above description).
 Initialization. Return true: device responding.  false:device not responding.  
 
 `void readSensor(float &temperature, float &pressure);`   
-Return both temperature in degres Celsius and pressure in Pa (the datasheet is not clear on how to read only one value….)  
+Return both temperature in degrees Celsius and pressure in Pa (the datasheet is not clear on how to read only one value….)  
+Temperature and pressure may be negative.
+
+## Platforms
+This library has been tested on Arduino UNO, Arduino ProMini, ESP32 and ESP8266.
 
 ## Version history
 - 1.0.0	Initial release
