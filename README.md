@@ -29,7 +29,7 @@ For example, in the datasheet for the **XGZP6897D** we found the following table
 |1≤P<2 |4096|
 |P<1| 8192|  
 
-« the K value is selected according to the positive pressure value only, like -100～100kPa,the K value is 64.”
+The K value is selected according to the positive pressure value only, like -100～100kPa,the K value is 64.
 
 ## Installation
 Easy install from the Arduino library manager or manually.
@@ -37,7 +37,7 @@ Easy install from the Arduino library manager or manually.
 [See Arduino documentation here](https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries)
 
 ## Interface
-See the example in the examples directory  
+See the examples in the examples directory  
 `#include <XGZP6897D.h>` 
 
 `XGZP6897D(uint16_t K);`  
@@ -49,6 +49,11 @@ Initialization. Return true: device responding.  false:device not responding.
 `void readSensor(float &temperature, float &pressure);`   
 Return both temperature in degrees Celsius and pressure in Pa (the datasheet is not clear on how to read only one value….)  
 Temperature and pressure may be negative.
+
+`void readRawSensor(int16_t &rawTemperature, int32_t &rawPressure);`   
+ Return raw integer values for temperature and pressure.  
+ The raw integer value of temperature must be devided by 256 to convert in degree Celsius.   
+ The raw integer value of pressure must be divided by the K factor to convert in Pa.   
 
 ## Platforms
 This library has been tested on Arduino UNO, Arduino ProMini, ESP32 and ESP8266.
