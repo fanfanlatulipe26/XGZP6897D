@@ -24,12 +24,13 @@ bool XGZP6897D::begin()
   if (Wire.endTransmission() == 0) {
     return true;  // Ok device is responding
   }
-  return false; // device not r
+  return false; // device not responding
 }
-//
-//  Read temperature (degres Celsius), and pressure (PA)
-void XGZP6897D::readSensor(float &temperature, float &pressure)
-{
+//  Return raw integer values for temperature and pressure.
+//  The raw integer of temperature must be devided by 256 to convert in degree Celsius
+//  The raw integer of pressure must be devided by the K factor to convert in Pa
+void XGZP6897D::readRawSensor(int16_t &rawTemperature, int32_t &rawPressure)
+ {
   int32_t pressure_adc;
   int16_t  temperature_adc ;
   uint8_t pressure_H, pressure_M, pressure_L, temperature_H, temperature_L;
@@ -62,8 +63,8 @@ void XGZP6897D::readSensor(float &temperature, float &pressure)
   temperature_adc = ((uint16_t)temperature_H << 8) + (uint16_t) temperature_L;
   // pressure is a signed2 complement style value, on 24bits.
   // need to extend the bit sign on the full 32bits.
-  pressure = ((pressure_adc << 8) >> 8) / _K;
-  temperature = float(temperature_adc) / 256;
+  rawPressure = ((pressure_adc << 8) >> 8);
+  rawTemperature = temperature_adc;
 #ifdef debugFS
   Serial.print(String(pressure_H, HEX));
   Serial.print("," + String(pressure_M, HEX));
@@ -72,8 +73,21 @@ void XGZP6897D::readSensor(float &temperature, float &pressure)
   Serial.print(" – " + String(temperature_H, HEX));
   Serial.print("," + String(temperature_L, HEX));
   Serial.print(":" + String(temperature_adc, HEX));
-  Serial.print(" - " + String(temperature) + ":" + String(pressure));
   Serial.println();
 #endif
   return ;
+} 
+//  Read temperature (degree Celsius), and pressure (PA)
+//  Return float values
+void XGZP6897D::readSensor(float &temperature, float &pressure)
+{
+  int32_t rawPressure;
+  int16_t  rawTemperature ;
+  readRawSensor(rawTemperature,rawPressure);
+  pressure = rawPressure / _K;
+  temperature = float(rawTemperature) / 256;
+  #ifdef debugFS
+  Serial.print(" - " + String(temperature) + ":" + String(pressure));
+  Serial.println();
+#endif
 }
