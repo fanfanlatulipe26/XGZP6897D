@@ -22,8 +22,8 @@ class XGZP6897D
     void readSensor(float &temperature, float &pressure);
     //  readRawSensor:
     //  Return raw integer values for temperature and pressure.
-    //  The raw integer of temperature must be devided by 256 to convert in degree Celsius
-    //  The raw integer of pressure must be devided by the K factor to convert in Pa
+    //  The raw integer value of temperature must be devided by 256 to convert in degree Celsius.
+    //  The raw integer value of pressure must be devided by the K factor to convert in Pa.
     void readRawSensor(int16_t &rawTemperature, int32_t &rawPressure);
   private:
     float _K;
