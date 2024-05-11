@@ -28,10 +28,11 @@ XGZP6897D mysensor(K);
 float pressure, temperature;
 void setup() {
   Serial.begin(9600);
+  delay(100);
   while (!mysensor.begin())  // initialize and check the device
   {
     Serial.println("Device not responding.");
-    delay(10);
+    delay(500);
   }
 }
 
