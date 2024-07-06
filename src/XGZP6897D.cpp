@@ -10,13 +10,11 @@
 #include <Wire.h>
 
 //  Descriptor. K depends on the exact model of the sensor. See datasheet and documentation
-XGZP6897D::XGZP6897D(uint16_t K)
 XGZP6897D::XGZP6897D(uint16_t K, TwoWire* theWire)
 {
   _K = K;
   _I2C_address = I2C_device_address;
-  if (theWire != NULL) _Wire = theWire;
-  else _Wire = &Wire;
+  _Wire = theWire;  
 }
 //
 //  
