@@ -19,6 +19,8 @@ The computation of the pressure requires a parameter, named K in the documentati
 For example, in the datasheet for the **XGZP6897D** we found the following table:  
 |Pressure range(kpa)|K(value)|
 |---|---|
+|500<P≤1000| 8|
+|260<P≤500| 16|
 |131<P≤260 |32|
 |65<P≤131| 64|
 |32<P≤65 |128|
