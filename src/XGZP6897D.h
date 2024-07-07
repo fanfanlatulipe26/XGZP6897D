@@ -33,6 +33,7 @@ class XGZP6897D
     float _K;
     uint8_t _I2C_address;
     TwoWire* _Wire;
+
 };
 
 #endif

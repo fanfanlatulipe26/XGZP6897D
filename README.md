@@ -57,7 +57,7 @@ Temperature and pressure may be negative.
  The raw integer value of temperature must be devided by 256 to convert in degree Celsius.   
  The raw integer value of pressure must be divided by the K factor to convert in Pa.   
 
-If you want to specify another I2C interface, you cann pass the interface to the constructor.
+If you want to specify another I2C interface, you can pass the interface to the constructor. 
 `XGZP6897D(uint16_t K, TwoWire* theWire);`  
 
 

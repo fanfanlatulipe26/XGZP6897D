@@ -20,7 +20,10 @@ XGZP6897D::XGZP6897D(uint16_t K, TwoWire* theWire)
 //  
 bool XGZP6897D::begin()
 {
+  // initialize only of the default wire is used
   _Wire->begin();
+  
+
   // A basic scanner, see if it ACK's
   _Wire->beginTransmission(_I2C_address);
   if (_Wire->endTransmission() == 0) {
@@ -91,5 +94,5 @@ void XGZP6897D::readSensor(float &temperature, float &pressure)
   #ifdef debugFS
   Serial.print(" - " + String(temperature) + ":" + String(pressure));
   Serial.println();
-#endif
+  #endif
 }
