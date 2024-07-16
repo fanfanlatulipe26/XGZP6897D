@@ -19,6 +19,8 @@ The computation of the pressure requires a parameter, named K in the documentati
 For example, in the datasheet for the **XGZP6897D** we found the following table:  
 |Pressure range(kpa)|K(value)|
 |---|---|
+|500<P≤1000| 8|
+|260<P≤500| 16|
 |131<P≤260 |32|
 |65<P≤131| 64|
 |32<P≤65 |128|
@@ -54,6 +56,10 @@ Temperature and pressure may be negative.
  Return raw integer values for temperature and pressure.  
  The raw integer value of temperature must be devided by 256 to convert in degree Celsius.   
  The raw integer value of pressure must be divided by the K factor to convert in Pa.   
+
+If you want to specify another I2C interface, you can pass the interface to the constructor. 
+`XGZP6897D(uint16_t K, TwoWire* theWire);`  
+
 
 ## Platforms
 This library has been tested on Arduino UNO, Arduino ProMini, ESP32 and ESP8266.
