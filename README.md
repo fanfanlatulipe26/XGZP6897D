@@ -44,6 +44,8 @@ See the examples in the examples directory
 
 `XGZP6897D(uint16_t K);`  
 Constructor. K is specific to the sensor we use (see above description).  
+If you want to specify another I2C interface, you can pass the interface to the constructor:   
+`XGZP6897D(uint16_t K, TwoWire* theWire);` 
 
 `bool begin();`  
 Initialization. Return true: device responding.  false:device not responding.  
@@ -57,14 +59,12 @@ Temperature and pressure may be negative.
  The raw integer value of temperature must be devided by 256 to convert in degree Celsius.   
  The raw integer value of pressure must be divided by the K factor to convert in Pa.   
 
-If you want to specify another I2C interface, you can pass the interface to the constructor. 
-`XGZP6897D(uint16_t K, TwoWire* theWire);`  
-
 
 ## Platforms
 This library has been tested on Arduino UNO, Arduino ProMini, ESP32 and ESP8266.
 
 ## Version history
+- 1.0.1 Accept an optional Wire / I2C port in the constructor
 - 1.0.0	Initial release
 
 ## Contact
