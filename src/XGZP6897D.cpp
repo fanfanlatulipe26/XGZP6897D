@@ -20,7 +20,6 @@ XGZP6897D::XGZP6897D(uint16_t K, TwoWire* theWire)
 //  
 bool XGZP6897D::begin()
 {
-  // initialize only of the default wire is used
   _Wire->begin();
   
 
