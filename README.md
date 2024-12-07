@@ -50,14 +50,16 @@ If you want to specify another I2C interface, you can pass the interface to the 
 `bool begin();`  
 Initialization. Return true: device responding.  false:device not responding.  
 
-`void readSensor(float &temperature, float &pressure);`   
+`bool readSensor(float &temperature, float &pressure);`   
 Return both temperature in degrees Celsius and pressure in Pa (the datasheet is not clear on how to read only one value….)  
-Temperature and pressure may be negative.
+Temperature and pressure may be negative.   
+Return "true" if the read is a success , "false" if an error occurs (timeout ??)
 
-`void readRawSensor(int16_t &rawTemperature, int32_t &rawPressure);`   
- Return raw integer values for temperature and pressure.  
+`boll readRawSensor(int16_t &rawTemperature, int32_t &rawPressure);`   
+ Return raw integer values for temperature and pressure.   
  The raw integer value of temperature must be devided by 256 to convert in degree Celsius.   
  The raw integer value of pressure must be divided by the K factor to convert in Pa.   
+ Return "true" if the read is a success , "false" if an error occurs (timeout ??)
 
 
 ## Platforms
