@@ -1,6 +1,6 @@
 # XGZP6897D
 Arduino basic library for **XGZP6897D** I2C differential pressure sensor from CFSensor  
-Associated with a pitot tube, differential pressure sensors are the basis for air speed sensor.   
+Associated with a pitot tube, a differential pressure sensor is the basis for an airspeed sensor.   
 
 This library was developed mainly for the **XGZP6897D** differential pressure sensor but **should be compatible with a wide range of I2C digital pressure sensors from CFSensor.com** (see list of I2C sensor [here](https://cfsensor.com/product-category/i2c-sensor/)) including:  
   
