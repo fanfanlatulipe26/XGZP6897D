@@ -1,3 +1,10 @@
+# WARNING
+Feb 2026  
+This library was developed following the information in the Data Sheet V2.6 (available in the doc directory).  The default I2C address of the device is 0x6D.  
+**It is not compatible with new releases of this device as described in Data Sheet V3.x** even if the base name of the device is still **XGZP6897D**.
+These devices don’t have the same I2C address (0x58 now) nor the same registers and commands.  
+
+
 # XGZP6897D
 Arduino basic library for **XGZP6897D** I2C differential pressure sensor from CFSensor  
 Associated with a pitot tube, a differential pressure sensor is the basis for an airspeed sensor.   
